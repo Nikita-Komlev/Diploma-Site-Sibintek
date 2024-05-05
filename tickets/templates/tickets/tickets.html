@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Clients{% endblock %}
+
+{% block content %}
+    <h1 class="text-2xl font-bold m-4">Список заявок</h1>
+
+    <div class="overflow-x-auto px-7">
+        <table class="mx-auto min-w-full rounded-lg overflow-hidden">
+            <thead class="bg-yellow-400">
+                <tr class="divide-x divide-gray-500">
+                    <th class="table-header">ID</th>
+                    <th class="table-header">Тема заявки</th>
+                    <th class="table-header">ФИО</th>
+                    <th class="table-header">Статус</th>
+                    <th class="table-header">Дата создания</th>
+                    <th class="table-header">Приоритет</th>
+                    <th class="table-header">Ответственный</th>
+                </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-300">
+                {% for ticket in tickets %}
+                    <tr class="divide-x divide-gray-200">
+                        <td class="table-cell text-center">{{ ticket.id }}</td>
+                        <td class="table-cell">{{ ticket.subject }}</td>
+                        <td class="table-cell">Иванов Иван Иванович</td>
+                        <td class="table-cell">{{ ticket.status }}</td>
+                        <td class="table-cell">{{ ticket.created_at }}</td>
+                        <td class="table-cell">{{ ticket.urgent }}</td>
+                        <td class="table-cell">John Doe</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="7" class="text-center">Нет заявок</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

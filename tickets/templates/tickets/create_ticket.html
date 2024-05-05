@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Создать заявку{% endblock %}
+
+{% block content %}
+    <div class="container mx-auto p-10">
+        <form method="post" class="w-full max-w-md mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+          {% csrf_token %}
+          <div class="mb-4">
+            <img class="mx-auto pb-8" src="{% static 'images/sibintek.svg' %}" alt="Сибинтек">
+            <label class="block text-gray-700 font-bold mb-2" for="id_subject">{{ form.subject.label }}</label>
+            {{ form.subject }}
+          </div>
+          <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2" for="id_description">{{ form.description.label }}</label>
+            {{ form.description }}
+          </div>
+          <div class="mb-6">
+            <label class="block text-gray-700 font-bold mb-2" for="id_urgent">{{ form.urgent.label }}</label>
+            {{ form.urgent }}
+          </div>
+          <div class="flex items-center justify-between">
+            <button class="bg-yellow-400 mx-auto hover:bg-yellow-500 text-gray-700 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+              Отправить заявку
+            </button>
+          </div>
+        </form>
+    </div>
+{% endblock %}

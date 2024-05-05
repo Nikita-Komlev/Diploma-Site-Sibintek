@@ -1,0 +1,22 @@
+{% load static %}
+{% if user.is_authenticated %}
+    <nav>
+        <div class="bg-white p-4 shadow-md flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+
+                <img src="{% static 'images/sibintek.svg' %}" alt="Сибинтек">
+                <a href="{% url 'inbox' %}" class="bg-yellow-400 text-black font-semibold py-2 px-4 rounded-lg hover:bg-yellow-500 transition duration-300">Заявки</a>
+                <a href="{% url 'create_ticket' %}" class="bg-yellow-400 text-black font-semibold py-2 px-4 rounded-lg hover:bg-yellow-500 transition duration-300">Создать заявку</a>
+{#                <button class="bg-yellow-400 text-black font-semibold py-2 px-4 rounded-lg hover:bg-yellow-500 transition duration-300">Чат</button>#}
+
+            </div>
+            <div class="space-x-4">
+{#                <button class="bg-yellow-400 text-black font-semibold py-2 px-6 rounded-full hover:bg-yellow-500 transition duration-300">Личный кабинет</button>#}
+                <a href="{% url 'logout' %}" class="bg-yellow-400 text-black font-semibold py-2 px-4 rounded-lg hover:bg-yellow-500 transition duration-300">Выйти</a>
+            </div>
+        </div>
+
+        {% block content %}
+        {% endblock %}
+    </nav>
+{% endif %}
