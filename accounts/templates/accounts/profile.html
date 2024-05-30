@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Clients{% endblock %}
+
+{% block content %}
+    <h1 class="text-2xl font-bold m-4">Мой профиль</h1>
+
+
+    <div class="bg-white p-6 mx-9 rounded-[15px]">
+        <div class="flex items-start">
+            <img src="{% static 'images/logo.png' %}" alt="Логотип" class="bg-yellow-400 rounded-full p-1 w-24 h-24">
+            <div class="ml-4 flex flex-col">
+                {% for userprofile in userprofiles %}
+                    <div class="flex mb-4">
+                        <p class="text-lg text-gray-700 font-semibold w-32">ФИО</p>
+                        <p class="text-gray-900 border rounded-lg bg-zinc-300 flex-1 py-1 px-4 leading-tight">{{ userprofile.username }}</p>
+                    </div>
+
+                    <div class="flex mb-4">
+                        <p class="text-lg text-gray-700 font-semibold w-32">Email</p>
+                        <p class="text-gray-900 border rounded-lg bg-zinc-300 flex-1 py-1 px-4 leading-tight">{{ userprofile.email }}</p>
+                    </div>
+
+                    <div class="flex mb-4">
+                        <p class="text-lg text-gray-700 font-semibold w-32">Номер телефона</p>
+                        <p class="text-gray-900 border rounded-lg bg-zinc-300 flex-1 py-1 px-4 leading-tight ">{{ userprofile.phone }}</p>
+                    </div>
+
+                    <div class="flex mb-4">
+                        <p class="text-lg text-gray-700 font-semibold w-32">Компания</p>
+                        <p class="text-gray-900 border rounded-lg bg-zinc-300 flex-1 py-1 px-4 leading-tight">{{ userprofile.company }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

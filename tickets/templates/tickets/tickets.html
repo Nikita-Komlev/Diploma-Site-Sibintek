@@ -1,4 +1,6 @@
+<!-- tickets/tickets.html -->
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Clients{% endblock %}
 
@@ -14,20 +16,30 @@
                     <th class="table-header">ФИО</th>
                     <th class="table-header">Статус</th>
                     <th class="table-header">Дата создания</th>
-                    <th class="table-header">Приоритет</th>
+                    <th class="table-header">Срочность</th>
                     <th class="table-header">Ответственный</th>
                 </tr>
             </thead>
-            <tbody class="bg-white divide-y divide-gray-300">
+            <tbody class="bg-white divide-y divide-gray-300 text-center">
                 {% for ticket in tickets %}
                     <tr class="divide-x divide-gray-200">
                         <td class="table-cell text-center">{{ ticket.id }}</td>
-                        <td class="table-cell">{{ ticket.subject }}</td>
-                        <td class="table-cell">Иванов Иван Иванович</td>
-                        <td class="table-cell">{{ ticket.status }}</td>
+                        <td class="table-cell underline underline-offset-5 decoration-yellow-400">
+                            <a href="{% url 'ticket_detail' ticket.id %}">{{ ticket.subject }}</a>
+                        </td>
+                        <td class="table-cell">
+                            <a href="{% url 'profile_detail' ticket.user.id %}">{{ ticket.user }}</a>
+                        </td>
+                        <td class="table-cell">{{ ticket.get_status_display }}</td>
                         <td class="table-cell">{{ ticket.created_at }}</td>
-                        <td class="table-cell">{{ ticket.urgent }}</td>
-                        <td class="table-cell">John Doe</td>
+                        <td class="table-cell">{{ ticket.get_urgent_display }}</td>
+                        <td class="table-cell">
+                            {% if ticket.responsible %}
+                                {{ ticket.responsible }}
+                            {% else %}
+                                Отсутствует
+                            {% endif %}
+                        </td>
                     </tr>
                 {% empty %}
                     <tr>

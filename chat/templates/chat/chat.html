@@ -1,0 +1,131 @@
+<!-- templates/chat/chat.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Чат{% endblock %}
+
+{% block content %}
+
+
+    <div class="flex h-full p-6 mx-1">
+        <!-- Sidebar -->
+        <div class="w-1/4 bg-gray-100 p-4 rounded-l-lg">
+            <div class="mb-4">
+                <input type="text" placeholder="Поиск" class="w-full p-2 rounded-lg border border-gray-300">
+            </div>
+            <div class="space-y-4">
+                <div class="flex items-center p-2 bg-white rounded-lg shadow">
+                    <div class="w-12 h-12 bg-gray-300 rounded-full"></div>
+                    <div class="ml-4">
+                        <div class="text-sm font-bold">ФИО</div>
+                        <div class="text-xs text-gray-500">Сообщение</div>
+                    </div>
+                </div>
+                <div class="flex items-center p-2 bg-white rounded-lg shadow">
+                    <div class="w-12 h-12 bg-gray-300 rounded-full"></div>
+                    <div class="ml-4">
+                        <div class="text-sm font-bold">ФИО</div>
+                        <div class="text-xs text-gray-500">Сообщение</div>
+                    </div>
+                </div>
+                <div class="flex items-center p-2 bg-white rounded-lg shadow">
+                    <div class="w-12 h-12 bg-gray-300 rounded-full"></div>
+                    <div class="ml-4">
+                        <div class="text-sm font-bold">ФИО</div>
+                        <div class="text-xs text-gray-500">Сообщение</div>
+                    </div>
+                </div>
+                <div class="flex items-center p-2 bg-white rounded-lg shadow">
+                    <div class="w-12 h-12 bg-gray-300 rounded-full"></div>
+                    <div class="ml-4">
+                        <div class="text-sm font-bold">ФИО</div>
+                        <div class="text-xs text-gray-500">Сообщение</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Chat Area -->
+        <div class="w-2/4 bg-white flex flex-col">
+            <div class="flex-1 p-4 overflow-y-auto">
+                <div class="space-y-4">
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full"></div>
+                        <div class="ml-4 bg-gray-300 p-4 rounded-lg">
+                            Сообщение пользователя
+                        </div>
+                    </div>
+                    <div class="flex items-start justify-end">
+                        <div class="mr-4 bg-yellow-300 p-4 rounded-lg">
+                            Ответ оператора
+                        </div>
+                        <div class="w-12 h-12 bg-gray-300 rounded-full"></div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full"></div>
+                        <div class="ml-4 bg-gray-300 p-4 rounded-lg">
+                            Сообщение пользователя
+                        </div>
+                    </div>
+                    <div class="flex items-start justify-end">
+                        <div class="mr-4 bg-yellow-300 p-4 rounded-lg">
+                            Ответ оператора
+                        </div>
+                        <div class="w-12 h-12 bg-gray-300 rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-4 bg-gray-100">
+                <form class="flex">
+                    <input type="text" class="flex-1 border rounded-l-lg p-2 focus:outline-none" placeholder="Введите сообщение...">
+                    <button type="submit" class="bg-yellow-400 text-gray-700 font-bold px-4 rounded-r-lg">Отправить</button>
+                </form>
+            </div>
+        </div>
+        <!-- Request Details -->
+        <div class="w-1/4 bg-gray-100 p-4 rounded-r-lg">
+            <div class="mb-4">
+                <button class="w-full p-2 bg-gray-300 rounded-lg">Тема</button>
+            </div>
+            <div class="mb-4">
+                <div class="w-full h-40 bg-gray-300 rounded-lg p-2">Описание</div>
+            </div>
+            <div class="mb-4">
+                <button class="w-full p-2 bg-gray-300 rounded-lg">Статус</button>
+            </div>
+            <div class="mt-auto">
+                <div class="text-right text-gray-500">Дата создания</div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{#        <div class="bg-white shadow-lg rounded-lg p-6 w-full max-w-md">#}
+{#            <div class="mb-4">#}
+{#                <h1 class="text-2xl font-bold">Чат</h1>#}
+{#            </div>#}
+{#            <div class="border rounded-lg p-4 h-64 overflow-y-auto bg-gray-50">#}
+{#                <!-- Здесь будут отображаться сообщения -->#}
+{#                <div class="mb-4">#}
+{#                    <div class="bg-blue-100 p-2 rounded-lg">#}
+{#                        <p>Привет! Как я могу помочь?</p>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <!-- Пример пользовательского сообщения -->#}
+{#                <div class="mb-4 text-right">#}
+{#                    <div class="bg-green-100 p-2 rounded-lg inline-block">#}
+{#                        <p>Мне нужна помощь с настройкой аккаунта.</p>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="mt-4">#}
+{#                <form id="chat-form" class="flex">#}
+{#                    <input id="message-input" type="text" class="flex-1 border rounded-l-lg p-2 focus:outline-none" placeholder="Введите сообщение...">#}
+{#                    <button type="submit" class="bg-blue-500 text-white px-4 rounded-r-lg">Отправить</button>#}
+{#                </form>#}
+{#            </div>#}
+{#        </div>#}
+
+{% endblock %}
+

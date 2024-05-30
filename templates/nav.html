@@ -7,11 +7,11 @@
                 <img src="{% static 'images/sibintek.svg' %}" alt="Сибинтек">
                 <a href="{% url 'inbox' %}" class="bg-yellow-400 text-black font-semibold py-2 px-4 rounded-lg hover:bg-yellow-500 transition duration-300">Заявки</a>
                 <a href="{% url 'create_ticket' %}" class="bg-yellow-400 text-black font-semibold py-2 px-4 rounded-lg hover:bg-yellow-500 transition duration-300">Создать заявку</a>
-{#                <button class="bg-yellow-400 text-black font-semibold py-2 px-4 rounded-lg hover:bg-yellow-500 transition duration-300">Чат</button>#}
+                <a href="{% url 'chat' %}" class="bg-yellow-400 text-black font-semibold py-2 px-4 rounded-lg hover:bg-yellow-500 transition duration-300">Чат</a>
 
             </div>
             <div class="space-x-4">
-{#                <button class="bg-yellow-400 text-black font-semibold py-2 px-6 rounded-full hover:bg-yellow-500 transition duration-300">Личный кабинет</button>#}
+                <a href="{% url 'profile' %}" class="bg-yellow-400 text-black font-semibold py-2 px-4 rounded-lg hover:bg-yellow-500 transition duration-300">Личный кабинет</a>
                 <a href="{% url 'logout' %}" class="bg-yellow-400 text-black font-semibold py-2 px-4 rounded-lg hover:bg-yellow-500 transition duration-300">Выйти</a>
             </div>
         </div>

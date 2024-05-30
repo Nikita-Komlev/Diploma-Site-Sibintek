@@ -1,3 +1,4 @@
+# forms.py
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .models import CustomUser
@@ -8,22 +9,30 @@ def set_form_field_style(field):
     })
 
 class CustomUserCreationForm(UserCreationForm):
+    full_name = forms.CharField(label='ФИО', max_length=150)
+
     class Meta:
         model = CustomUser
-        fields = ('username', 'email', 'company', 'phone')
+        fields = ('full_name', 'email', 'company', 'phone', 'password1', 'password2')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['username'].label = 'ФИО'
-        self.fields['password1'].label = 'Пароль'
-        self.fields['password2'].label = 'Подтвердите пароль'
         self.fields['email'].label = 'Почта'
         self.fields['company'].label = 'Компания'
         self.fields['phone'].label = 'Номер телефона'
+        self.fields['password1'].label = 'Пароль'
+        self.fields['password2'].label = 'Подтвердите пароль'
 
         for field_name, field in self.fields.items():
             set_form_field_style(field)
 
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        full_name = self.cleaned_data['full_name']
+        user.username = full_name  # Set the username to be the full name
+        if commit:
+            user.save()
+        return user
 
 class CustomLoginForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput())
