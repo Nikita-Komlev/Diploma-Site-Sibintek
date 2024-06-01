@@ -38,7 +38,14 @@
           {% endif %}
         </p>
       </div>
+
       <div class="flex space-x-4">
+        {% if is_staff and not ticket.responsible %}
+            <form action="{% url 'take_ticket' ticket.pk %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700">Взять заявку</button>
+            </form>
+        {% endif %}
         <a href="{% url 'ticket_update' ticket.id %}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Редактировать</a>
         <a href="{% url 'ticket_delete' ticket.id %}" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700">Удалить</a>
       </div>

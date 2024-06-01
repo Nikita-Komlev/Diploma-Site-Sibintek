@@ -1,9 +1,11 @@
 # tickets/views.py
+
 from django.urls import reverse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
+from django.views import View
 from .models import Ticket
 from .forms import TicketForm
 
@@ -34,10 +36,24 @@ class TicketListView(LoginRequiredMixin, ListView):
         else:
             return Ticket.objects.filter(user=user)  # Для обычных пользователей
 
+
 class TicketDetailView(LoginRequiredMixin, DetailView):
     model = Ticket
     template_name = 'tickets/ticket_detail.html'
     context_object_name = 'ticket'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['is_staff'] = self.request.user.is_staff
+        return context
+
+class TakeTicketView(LoginRequiredMixin, View):
+    def post(self, request, pk):
+        ticket = get_object_or_404(Ticket, pk=pk)
+        ticket.responsible = request.user
+        ticket.status = 'In process'
+        ticket.save()
+        return redirect('ticket_detail', pk=ticket.pk)
 
 class TicketUpdateView(LoginRequiredMixin, UpdateView):
     model = Ticket
