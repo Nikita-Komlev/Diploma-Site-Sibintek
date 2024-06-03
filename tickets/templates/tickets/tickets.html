@@ -35,7 +35,7 @@
                         <td class="table-cell">{{ ticket.get_urgent_display }}</td>
                         <td class="table-cell">
                             {% if ticket.responsible %}
-                                {{ ticket.responsible }}
+                                <a href="{% url 'profile_detail' ticket.responsible.id %}">{{ ticket.responsible }}</a>
                             {% else %}
                                 Отсутствует
                             {% endif %}
